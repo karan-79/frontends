@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "build": "lerna run build",
-    "sm:dev": "lerna run dev --scope store-management"
+    "sm:dev": "lerna run dev --scope store-management",
+    "pack:commons:local": "lerna exec --scope common-components -- pnpm pack"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -24,6 +25,8 @@
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",
-    "vite": "^5.1.4"
+    "vite": "^5.1.4",
+    "vite-plugin-dts": "^3.8.1",
+    "vite-plugin-typescript": "^1.0.4"
   }
 }

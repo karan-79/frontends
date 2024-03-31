@@ -1,12 +1,8 @@
-import { useState } from 'react'
+import { useState } from "react";
+import { router } from "../router/Router";
+import { RouterProvider } from "react-router-dom";
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-  <div className='text-center text-blue-400 bg-yellow-200'>
-    Hello World
-  </div>
-  )
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;

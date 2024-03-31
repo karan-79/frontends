@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "npmClient": "pnpm",
   "packages": [
-    "apps/*"
+    "apps/*",
+    "packages/*"
   ]
 }

@@ -1,11 +1,15 @@
+import StoreTitle from "./Store/StoreTitle";
+
 const StoreOverview = () => {
   return (
-    <>
-      list of stores that user owns
-      <li>store 1</li>
-      <li>store 2</li>
-      <li>store 3</li>
-    </>
+    <div
+      id="sm-overview"
+      className="mt-2 flex min-w-full flex-col items-center font-sans"
+    >
+      <div className="w-3/4 flex flex-col border space-y-2">
+        <StoreTitle />
+      </div>
+    </div>
   );
 };
 

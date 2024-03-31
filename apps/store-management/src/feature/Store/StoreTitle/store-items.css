@@ -1,0 +1,7 @@
+.crousal-item {
+    flex: 1 0 33.33%;
+    position: relative;
+    align-items: center; /* Center image vertically */
+  justify-content: center; 
+}
+
