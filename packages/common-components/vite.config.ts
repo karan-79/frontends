@@ -8,12 +8,12 @@ export default defineConfig({
     lib: {
       entry: "src/index.ts",
       name: "common-components",
-      fileName: (format) => `my-component-library.${format}.js`, // Output file name
+      fileName: (format) => `common-components.${format}.js`, // Output file name
       formats: ["es", "umd"], // Output formats (ES modules and UMD)
     },
     outDir: "./lib",
     rollupOptions: {
-      external: ["react"],
+      external: ["react", "tailwindcss"],
       output: {
         globals: {
           react: "React",

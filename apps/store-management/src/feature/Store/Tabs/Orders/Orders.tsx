@@ -36,10 +36,11 @@ const items = [
 const Orders = () => {
   return (
     <div id="items-container" className="p-2">
-      {[items[0]].map((item, idx) => {
+      {items.map((item, idx) => {
         return (
           <OrderItem
             name={item.name}
+            key={idx + 3}
             description={item.description}
             price={item.price + ""}
             veg={item.veg}

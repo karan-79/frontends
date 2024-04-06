@@ -1,22 +1,24 @@
-import { Children, FC, PropsWithChildren, useState } from "react";
-import Orders from "./Orders";
-import Reviews from "./Reviews/Reviews";
+import { FC, PropsWithChildren } from "react";
+import { StoreTab } from "./utils";
 
-const Tabs = () => {
-  const [tab, setTab] = useState(0);
+type Props = {
+  selectedTab: StoreTab;
+  setTab: (tab: StoreTab) => void;
+};
+
+const Tabs: FC<Props> = ({ selectedTab, setTab }) => {
   return (
     <>
       <TabContainer>
-        {["Order", "Reviews"].map((name, idx) => (
+        {Object.values(StoreTab).map((name: StoreTab, idx) => (
           <Tab
             name={name}
             key={idx + 1}
-            active={tab == idx}
-            onClick={() => setTab(idx)}
+            active={name === selectedTab}
+            onClick={() => setTab(name)}
           />
         ))}
       </TabContainer>
-      {[<Orders />, <Reviews />][tab]}
     </>
   );
 };
@@ -26,7 +28,7 @@ const TabContainer: FC<PropsWithChildren> = ({ children }) => (
 );
 
 type TabProps = {
-  name: string;
+  name: StoreTab;
   active: boolean;
   onClick: () => void;
 };

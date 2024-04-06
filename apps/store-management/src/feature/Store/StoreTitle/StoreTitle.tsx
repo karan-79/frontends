@@ -1,7 +1,5 @@
-import { FC, PropsWithChildren } from "react";
-import "./store-items.css";
 import PhotosCrousal from "./PhotosCrousal/PhotosCrousal";
-import Tabs from "./Tabs";
+import "./store-items.css";
 
 const StoreTitle = () => {
   return (
@@ -10,7 +8,6 @@ const StoreTitle = () => {
       <div className="p-1 h-24 font-normal text-7xl flex items-center">
         My Store
       </div>
-      <Tabs />
     </>
   );
 };

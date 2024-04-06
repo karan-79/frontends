@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { Button } from "../../../../../../../../../packages/common-components";
+import { Button } from "common-components/src";
+
 type Props = {
   name: string;
   description: string;
@@ -25,7 +26,7 @@ const OrderItem: FC<Props> = ({
         </div>
       </div>
       <div className="flex items-center">
-        <Button>Add button</Button>
+        <Button type="primary">Add button</Button>
       </div>
     </div>
   );

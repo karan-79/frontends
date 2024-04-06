@@ -9,7 +9,10 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+  "files": [
+    "index.js"
+  ],
   "dependencies": {
-    "common-components": "file:..\\..\\packages\\common-components"
+    "common-components": "file:..\\..\\.local\\common-components-0.0.0.tgz"
   }
 }
