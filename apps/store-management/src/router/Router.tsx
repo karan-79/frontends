@@ -4,11 +4,16 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import StoreOverview from "../feature/StoreOverview";
+import CreateStore from "../feature/CreateStore/CreateStore.tsx";
 
-export const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<StoreOverview />}>
-      <Route path="{name}" element></Route>
-    </Route>
-  )
-);
+const routes = [
+    {
+        path: "/:storeid",
+        element: <StoreOverview/>
+    },
+    {
+        path: "/create",
+        element: <CreateStore/>
+    }
+]
+export const router = createBrowserRouter(routes, { basename : "/"});

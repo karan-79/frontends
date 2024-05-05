@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { router } from "../router/Router";
 import { RouterProvider } from "react-router-dom";
-import "common-components/lib/style.css";
+import "common-components/dist/style.css";
 function App() {
-  return <RouterProvider router={router} />;
+  return <div className="container bg-gray-800">
+    <RouterProvider router={router} /></div>
 }
 
 export default App;
