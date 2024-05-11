@@ -1,14 +1,29 @@
+import { Box, Button, Typography } from "@mui/material";
 import PhotosCrousal from "./PhotosCrousal/PhotosCrousal";
-import "./store-items.css";
+import { FC } from "react";
 
-const StoreTitle = () => {
-  return (
-    <>
-      <PhotosCrousal />
-      <div className="p-1 h-24 font-normal text-7xl flex items-center">
-        My Store
-      </div>
-    </>
-  );
+type Props = {
+    inEditMode: boolean;
+    onEdit: () => void;
+};
+const StoreTitle: FC<Props> = ({ inEditMode, onEdit }) => {
+    return (
+        <>
+            <PhotosCrousal />
+            <Box
+                display="flex"
+                minWidth="100%"
+                alignItems="center"
+                justifyContent="space-between"
+            >
+                <Typography variant="h2">My Store</Typography>
+                {!inEditMode && (
+                    <Button variant="contained" onClick={onEdit}>
+                        Edit
+                    </Button>
+                )}
+            </Box>
+        </>
+    );
 };
 export default StoreTitle;

@@ -1,39 +1,64 @@
-import {FC, useState} from "react";
-import {Button, CounterButton} from "common-components/src";
+import { FC, useState } from "react";
+import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 
 type Props = {
-  name: string;
-  description: string;
-  price: string;
-  veg: boolean;
-  availability: boolean;
+    name: string;
+    description: string;
+    price: string;
+    veg: boolean;
+    availability: boolean;
 };
 
 const OrderItem: FC<Props> = ({
-  name,
-  description,
-  availability,
-  price,
-  veg,
+    name,
+    description,
+    availability,
+    price,
+    veg,
 }) => {
-  const [count, setCount]= useState(0);
-  return (
-    <div className="flex flex-row flex-1 border-gray-150 border-2 rounded-md justify-between p-2">
-      <div className="min-w-75p px-1 flex flex-col">
-        <div className="text-lg">{name}</div>
-        <div>{price}</div>
-        <div>
-          <p>{description}</p>
-        </div>
-      </div>
-      <div className="flex items-center">
-        {count > 0 ? 
-            <CounterButton count={count} onChange={setCount}/>
-        : <Button onClick={()=>setCount(1)}>Add button</Button>}
-
-      </div>
-    </div>
-  );
+    const [count, setCount] = useState(0);
+    return (
+        <Grid
+            container
+            direction="row"
+            justifyContent="space-between"
+            sx={{ border: "2px solid gray", padding: 1, borderRadius: "6px" }}
+        >
+            <Grid item>
+                <Box display="flex" flexDirection="column">
+                    <Typography variant="h6">{name}</Typography>
+                    <Typography>{price}</Typography>
+                    <Typography>{description}</Typography>
+                </Box>
+            </Grid>
+            <Grid item>
+                {count > 0 ? (
+                    <CounterButton count={count} onChange={setCount} />
+                ) : (
+                    <Button onClick={() => setCount(1)}>Add button</Button>
+                )}
+            </Grid>
+        </Grid>
+    );
 };
 
 export default OrderItem;
+
+type CounterButtonProps = {
+    count: number;
+    onChange: (newCount: number) => void;
+};
+const CounterButton: FC<CounterButtonProps> = ({ count, onChange }) => {
+    return (
+        <Stack direction="row" spacing={2}>
+            <Button variant="contained" onClick={() => onChange(count - 1)}>
+                {" "}
+                -{" "}
+            </Button>
+            <Button variant="contained" onClick={() => onChange(count + 1)}>
+                {" "}
+                +{" "}
+            </Button>
+        </Stack>
+    );
+};

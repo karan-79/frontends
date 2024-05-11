@@ -1,7 +1,0 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.max-h-inherit {
-    max-height: inherit;
-}

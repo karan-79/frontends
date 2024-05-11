@@ -1,47 +1,41 @@
 import { FC, PropsWithChildren } from "react";
-import { StoreTab } from "./utils";
+import { StoreTab, getStoreTabFromIndex, getStoreTabIndex } from "./utils";
+import { Box, Tab, Tabs as MuiTab } from "@mui/material";
 
 type Props = {
-  selectedTab: StoreTab;
-  setTab: (tab: StoreTab) => void;
+    selectedTab: StoreTab;
+    setTab: (tab: StoreTab) => void;
 };
 
 const Tabs: FC<Props> = ({ selectedTab, setTab }) => {
-  return (
-    <>
-      <TabContainer>
-        {Object.values(StoreTab).map((name: StoreTab, idx) => (
-          <Tab
-            name={name}
-            key={idx + 1}
-            active={name === selectedTab}
-            onClick={() => setTab(name)}
-          />
-        ))}
-      </TabContainer>
-    </>
-  );
+    const handleTabChange = (_: any, newTab: number) => {
+        console.log("changeing tab", newTab);
+        setTab(getStoreTabFromIndex(newTab));
+    };
+    return (
+        <>
+            <TabContainer>
+                <MuiTab
+                    value={getStoreTabIndex(selectedTab)}
+                    onChange={handleTabChange}
+                >
+                    {Object.values(StoreTab).map((name: StoreTab, idx) => (
+                        <Tab label={name} key={idx + 1} />
+                    ))}
+                </MuiTab>
+            </TabContainer>
+        </>
+    );
 };
 
 const TabContainer: FC<PropsWithChildren> = ({ children }) => (
-  <div className="flex">{children}</div>
+    <Box sx={{ borderBottom: 1, borderColor: "divider" }}>{children}</Box>
 );
 
-type TabProps = {
-  name: StoreTab;
-  active: boolean;
-  onClick: () => void;
-};
-
-const Tab: FC<TabProps> = ({ name, active, onClick }) => (
-  <div
-    onClick={onClick}
-    className={`flex items-center max-h-10 ${
-      active ? "border-2 border-b-slate-500" : ""
-    } bg-slate-300 hover:bg-slate-400 cursor-pointer text-2xl px-6 text-slate-600`}
-  >
-    {name}
-  </div>
-);
-
+function a11yProps(index: number) {
+    return {
+        id: `simple-tab-${index}`,
+        "aria-controls": `simple-tabpanel-${index}`,
+    };
+}
 export default Tabs;
