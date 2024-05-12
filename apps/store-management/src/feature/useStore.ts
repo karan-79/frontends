@@ -4,10 +4,11 @@ import {
 } from "./CreateStore/TextFieldReplacableItem/types";
 import { CreateStoreState } from "./CreateStore/types";
 import { create } from "zustand";
+type StoreWithId = { id: string } & CreateStoreState;
 type StoreState = {
-    id: string;
+    store: StoreWithId;
     items: ItemWithId[];
-} & CreateStoreState;
+};
 
 type Actions = {
     updateStoreInfo: (storeDetails: Partial<CreateStoreState>) => void;
@@ -16,4 +17,12 @@ type Actions = {
     deleteItem: (id: string) => void;
 };
 
-const useStore = create<StoreState & Actions>((set) => ({}));
+//const useStore = create<StoreState & Actions>((set) => ({
+//    store: {} as StoreWithId,
+//    items: [],
+//    updateStoreInfo: (storeDetails: Partial<CreateStoreState>) => ;
+//    appendItem: (item: ItemState) => void;
+//    updateItem: (id: string, item: Partial<ItemState>) => void;
+//    deleteItem: (id: string) => void;
+//
+//}));

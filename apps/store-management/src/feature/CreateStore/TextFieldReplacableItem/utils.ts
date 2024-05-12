@@ -1,4 +1,4 @@
-import { ItemState, TextFieldReplacableItemProps } from "./types.ts";
+import { ItemState, TextFieldReplaceableProps } from "./types";
 
 export const validateCreateItem = (val: Partial<ItemState>): val is ItemState =>
     val !== undefined &&
@@ -8,6 +8,6 @@ export const validateCreateItem = (val: Partial<ItemState>): val is ItemState =>
 
 export const isCreateItemHaveRepresentableValue = (
     props: { value: ItemState } | {}
-): props is TextFieldReplacableItemProps & { value: ItemState } => {
+): props is TextFieldReplaceableProps & { value: ItemState } => {
     return Object.keys(props).includes("value");
 };
