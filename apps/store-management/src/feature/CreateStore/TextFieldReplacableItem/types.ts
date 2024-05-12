@@ -1,32 +1,19 @@
-export type CreateItemState = {
+export type ItemState = {
     name: string;
     description: string;
     price: string;
 };
 
-export type EditItemState = CreateItemState & { id: string };
+export type ItemWithId = ItemState & { id: string };
 
-export type AppendItemType = {
-    onAppendItem: (value: CreateItemState) => void;
-    showInput: true;
+type CreateItemType = { item: ItemState; __tag: "Create" };
+
+type DisplayItemType = {
+    item: ItemState;
+    __tag: "Display";
 };
 
-export type EditItemType = {
-    onEditItem: (value: EditItemState) => void;
-    value: EditItemState;
-    showInput: true;
-};
-
-export type DisplayItemType = Omit<EditItemType, "showInput">;
-
-export type TextFieldReplacableItemProps =
-    | AppendItemType
-    | EditItemType
-    | DisplayItemType;
-
-export const isDisplayItemType = (
-    item: any 
-): item is DisplayItemType =>
-    Object.keys(item).find((v) => v === "showInput") === undefined;
-
-export const 
+export type TextFieldReplaceableProps = {
+    onSave: (item: ItemState) => void;
+    onCancel: () => void;
+} & (CreateItemType | DisplayItemType);
